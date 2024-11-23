@@ -1,0 +1,160 @@
+{
+    "initial_contact": {
+        "with_name_no_tour": [
+            "Hi, this is [agent name] with [brokerage], am I speaking with [lead_name]? Great! I see you are reaching out about [property], when would you like to go see it?"
+        ],
+        "no_name_no_tour": [
+            "Hi, this is [agent name] with [brokerage], who am I speaking with this morning? It is nice to meet you [lead_name]! I see you are reaching out about [property], when would you like to go see it?"
+        ],
+        "with_name_scheduled": [
+            "Hi, this is [agent name] with [brokerage], am I speaking with [lead_name]? Great! I see you have scheduled a showing for [property], on [scheduled_date] at [scheduled_time]. I will be happy to show it to you then! Are you open to touring other properties similar to this one while we are out looking at this home?"
+        ],
+        "no_name_scheduled": [
+            "Hi, this is [agent name] with [brokerage], who am I speaking with this morning? It is nice to meet you [lead_name]! I see you have scheduled a showing for [property], on [scheduled_date] at [scheduled_time], I will be happy to show it to you then! Are you open to touring other properties similar to this one while we are out looking at this home?"
+        ],
+        "voicemail": [
+            "Hi, this is [agent name] with [brokerage] reaching out about your interest in [property]. I have some helpful information about this home and would love to discuss it with you. Please give me a call back at [phone]. Thanks and have a great day!",
+            "Hello! [agent name] here from [brokerage]. I noticed you were interested in [property] and wanted to reach out. I have some insider knowledge about this property that might interest you. Call me at [phone] when you have a moment."
+        ]
+    },
+    "objection_handlers": {
+        "just_looking": {
+            "patterns": [
+                "just looking",
+                "just browsing",
+                "not ready",
+                "early stages",
+                "starting search",
+                "doing research"
+            ],
+            "responses": [
+                "I completely understand. Many of my clients start by just looking. What features are you most interested in seeing when you do decide to view homes?",
+                "That's actually the perfect time for us to connect! Would you like me to set up alerts for properties that match your criteria? That way you'll be the first to know when something perfect hits the market.",
+                "Smart approach! The market moves quickly, so it's good to start early. What type of properties have caught your eye so far?"
+            ]
+        },
+        "already_has_agent": {
+            "patterns": [
+                "working with .*agent",
+                "have .*agent",
+                "my .*realtor",
+                "another agent"
+            ],
+            "responses": [
+                "I understand and completely respect that. May I ask how long you've been working together? Sometimes a fresh perspective can be helpful.",
+                "That's great that you have representation. Have you signed any formal agreements with them? I ask because I might have some properties that aren't on the market yet.",
+                "I respect that relationship. I'm curious though - what made you look at this property? I might know of similar homes that your agent hasn't seen yet."
+            ]
+        },
+        "price_too_high": {
+            "patterns": [
+                "too expensive",
+                "too high",
+                "over.*budget",
+                "can't afford",
+                "looking.*lower"
+            ],
+            "responses": [
+                "I understand price is important. What range were you thinking would be more comfortable for you? I know several similar properties that might better fit your budget.",
+                "The market can be challenging. Would you be interested in hearing about some similar properties in your target price range? I know of several great options.",
+                "Thanks for being upfront about the budget. Besides price, what other features are most important to you? This helps me find the perfect match within your range."
+            ]
+        },
+        "need_to_sell": {
+            "patterns": [
+                "need to sell",
+                "sell.*first",
+                "sell.*current",
+                "haven't sold",
+                "still own"
+            ],
+            "responses": [
+                "That's a common situation. Would you like to hear about some strategies I've helped other clients use to coordinate selling and buying? I have some great options.",
+                "I actually specialize in helping clients manage the sell-then-buy transition. Would you like to first discuss the potential value of your current home?",
+                "I understand the timing challenge. Have you considered options like rent-back agreements or contingency offers? I'd be happy to explain how these could work for you."
+            ]
+        },
+        "bad_timing": {
+            "patterns": [
+                "not a good time",
+                "busy now",
+                "in a meeting",
+                "driving",
+                "call back",
+                "later"
+            ],
+            "responses": [
+                "No problem at all! When would be a better time for us to connect? I want to make sure you get all the information you need about this property.",
+                "I completely understand. Would you prefer if I sent you some information by email first, and then we can schedule a call at a time that works better for you?",
+                "Of course! What would be the best time for me to reach back out? I want to make sure this property is still available when we connect."
+            ]
+        },
+        "need_more_info": {
+            "patterns": [
+                "more information",
+                "more details",
+                "send.*info",
+                "email.*details",
+                "photos"
+            ],
+            "responses": [
+                "I'd be happy to send you detailed information. Could I get your email? Also, would you be interested in scheduling a virtual tour so you can see everything up close?",
+                "There's actually quite a bit to share about this property. What specific aspects interest you most? I can prepare a comprehensive package focusing on what matters to you.",
+                "I have access to additional photos and details not shown on Zillow. Would you like me to email those to you? We could also schedule a quick virtual walkthrough."
+            ]
+        },
+        "waiting_for_spouse": {
+            "patterns": [
+                "talk to.*spouse",
+                "check with.*partner",
+                "discuss with.*wife",
+                "discuss with.*husband",
+                "need to consult"
+            ],
+            "responses": [
+                "Of course! Family decisions are important. Would you like me to send you some information that you can review together? I'm happy to schedule a call with both of you.",
+                "Absolutely understand. What's the best way to share information with both of you? I can set up a joint video call or send detailed information for you to review together.",
+                "Would it be helpful if I put together a quick property report that you can discuss together? I can highlight the features that might interest both of you."
+            ]
+        }
+    },
+    "qualifying_questions": {
+        "timeline": [
+            "What's your ideal timeline for finding and moving into your new home?",
+            "Are you looking to move within a specific timeframe?",
+            "When would you like to be settled in your new home?"
+        ],
+        "preferences": [
+            "What features are most important to you in your next home?",
+            "What aspects of [property] caught your attention?",
+            "Are there specific must-haves you're looking for?"
+        ],
+        "budget": [
+            "Have you spoken with a lender about your home purchase?",
+            "Are you familiar with the current mortgage rates and programs available?",
+            "Would you like me to connect you with a trusted local lender?"
+        ],
+        "motivation": [
+            "What's prompting your interest in moving at this time?",
+            "What made you start looking at homes in this area?",
+            "What would your ideal moving situation look like?"
+        ]
+    },
+    "closing_statements": {
+        "schedule_viewing": [
+            "I have some availability this [day/time] to show you the property. Would that work for you?",
+            "Would you like to see this home in person? I can arrange a private showing at your convenience.",
+            "The property is available for viewing today or tomorrow. When would be best for you?"
+        ],
+        "follow_up": [
+            "Let me send you some additional information about the property and area. What's the best email to use?",
+            "I'll put together a detailed report about this and similar properties. Where should I send that?",
+            "I'll keep an eye out for properties matching your criteria. What's the best way to reach you when I find something perfect?"
+        ],
+        "urgency": [
+            "Properties in this area typically sell within [X] days. Would you like to see it before someone else snaps it up?",
+            "I've had several inquiries about this property. Shall we schedule a viewing so you don't miss out?",
+            "Given the current market conditions, homes like this don't last long. Would you like to see it today?"
+        ]
+    }
+}

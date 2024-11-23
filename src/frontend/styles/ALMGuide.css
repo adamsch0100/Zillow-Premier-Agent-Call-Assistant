@@ -1,0 +1,117 @@
+.alm-guide {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.progress-tracker {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.stage {
+  flex: 1;
+  text-align: center;
+  padding: 15px;
+  margin: 0 10px;
+  border-radius: 5px;
+  background: #fff;
+  border: 2px solid #ddd;
+  font-weight: bold;
+}
+
+.stage.active {
+  border-color: #007bff;
+  background: #007bff;
+  color: white;
+}
+
+.stage.completed {
+  border-color: #28a745;
+  background: #28a745;
+  color: white;
+}
+
+.current-stage {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.current-stage h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.scripts {
+  margin-bottom: 30px;
+}
+
+.script-item {
+  padding: 15px;
+  margin: 10px 0;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.script-item:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.objections {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #dee2e6;
+}
+
+.objection-group {
+  margin-bottom: 20px;
+}
+
+.objection-group h4 {
+  color: #495057;
+  margin-bottom: 10px;
+}
+
+.response-item {
+  padding: 12px;
+  margin: 8px 0;
+  background: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.response-item:hover {
+  background: #dee2e6;
+  transform: translateY(-2px);
+}
+
+.complete-stage {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-top: 30px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.complete-stage:hover {
+  background: #0056b3;
+}

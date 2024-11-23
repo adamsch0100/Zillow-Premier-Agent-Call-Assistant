@@ -1,0 +1,114 @@
+.suggestion-panel {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+  max-width: 800px;
+}
+
+.alm-progress {
+  margin-bottom: 20px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.progress-bar {
+  background: #f0f0f0;
+  border-radius: 10px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.current-focus {
+  margin-top: 10px;
+  color: #666;
+  font-weight: 500;
+}
+
+.suggestions-container {
+  margin: 20px 0;
+}
+
+.suggestions-container h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.suggestions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.suggestion-item {
+  padding: 15px;
+  border-radius: 6px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.suggestion-item:hover {
+  background: #e9ecef;
+  transform: translateY(-1px);
+}
+
+.suggestion-item.selected {
+  background: #e3f2fd;
+  border-color: #90caf9;
+}
+
+.alm-status {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  color: #666;
+}
+
+.status-item.completed {
+  color: #4CAF50;
+}
+
+.status-label {
+  font-weight: 500;
+}
+
+.status-value {
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .suggestion-panel {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .suggestion-item {
+    padding: 12px;
+  }
+}

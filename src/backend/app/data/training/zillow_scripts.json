@@ -1,0 +1,101 @@
+{
+    "initial_greetings": {
+        "name_known": {
+            "script": "Hi {name}, this is {agent_name} with {brokerage}. I saw you were interested in {property_address}. Is now a good time to talk?",
+            "variations": [
+                "Hello {name}, {agent_name} here from {brokerage}. Thanks for your interest in {property_address}. Do you have a moment?",
+                "Hi {name}, this is {agent_name} calling from {brokerage} about the home you inquired about on Zillow. Is this a good time?"
+            ]
+        },
+        "name_unknown": {
+            "script": "Hi, this is {agent_name} with {brokerage} reaching out about a property you viewed on Zillow. Am I speaking with the person who inquired?",
+            "variations": [
+                "Hello, {agent_name} here from {brokerage}. I received your inquiry from Zillow. Is this a good time to talk about the property?",
+                "Hi there, this is {agent_name} with {brokerage}. I'm following up on your Zillow inquiry. May I ask who I'm speaking with?"
+            ]
+        }
+    },
+    "property_interest": {
+        "specific_property": {
+            "script": "Great! The {property_address} is a beautiful property. Are you interested in seeing it in person?",
+            "followup": "Would you like to see any other similar properties while we're out?",
+            "variations": [
+                "That's a fantastic home you're interested in. When would be a good time for you to take a look?",
+                "I'd love to show you that property. Are you available to see it today or tomorrow?"
+            ]
+        },
+        "general_search": {
+            "script": "What features are most important to you in your home search?",
+            "variations": [
+                "What specific things are you looking for in your next home?",
+                "Could you tell me about your must-haves in a property?"
+            ]
+        }
+    },
+    "objection_handlers": {
+        "already_agent": {
+            "script": "I understand you're working with another agent. Have you signed any paperwork with them?",
+            "followup": {
+                "if_no": "What if I could show you some properties that might be a better fit for what you're looking for?",
+                "if_yes": "I completely respect that relationship. I wish you the best with your home search!"
+            }
+        },
+        "just_looking": {
+            "script": "I understand you're in the early stages. Many of my clients started just looking too. What motivated you to start looking at homes?",
+            "variations": [
+                "That's exactly how you should start! What features caught your eye about this property?",
+                "Early research is smart! Would you like to see what it looks like in person? Sometimes that helps clarify what you're looking for."
+            ]
+        },
+        "too_expensive": {
+            "script": "I understand price is important. What's your ideal price range? I can show you some great options in that range.",
+            "followup": "Would you like me to set up a custom search that alerts you to properties in your price range?"
+        },
+        "need_to_sell_first": {
+            "script": "That's very common. Would you like me to give you a free market analysis of your current home?",
+            "variations": [
+                "I can help with both selling your current home and finding your new one. Would you like to know what your home might be worth?",
+                "I specialize in helping clients coordinate selling and buying. What's your timeline for making this transition?"
+            ]
+        }
+    },
+    "closing_techniques": {
+        "schedule_showing": {
+            "script": "I have availability today and tomorrow. Which would work better for you?",
+            "variations": [
+                "Would morning or afternoon work better for viewing the property?",
+                "I could show you the property at 2pm or 4pm today. Which would you prefer?"
+            ]
+        },
+        "get_commitment": {
+            "script": "Great! Let me confirm your appointment for {time} at {address}. What's the best number to text you the confirmation details?",
+            "variations": [
+                "Perfect! I'll meet you at {address} at {time}. Would you like me to send you a calendar invite?",
+                "Excellent! I'll see you at {time}. Should I text you the property details and my contact information?"
+            ]
+        }
+    },
+    "best_practices": {
+        "avoid_topics": [
+            "Discussing financing details on first call",
+            "Mentioning property negatives",
+            "Talking about market challenges",
+            "Discussing other clients",
+            "Making assumptions about budget"
+        ],
+        "focus_points": [
+            "Schedule in-person showing",
+            "Build rapport",
+            "Understand motivation",
+            "Identify preferences",
+            "Set next steps"
+        ],
+        "key_questions": [
+            "When would you like to see the property?",
+            "Are you interested in seeing other similar homes?",
+            "What features are most important to you?",
+            "What's your ideal timeline?",
+            "Have you seen any other properties in person?"
+        ]
+    }
+}

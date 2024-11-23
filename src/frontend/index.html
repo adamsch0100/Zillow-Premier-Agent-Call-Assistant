@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zillow Premier Agent Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .audio-wave {
+            display: flex;
+            align-items: center;
+            height: 20px;
+        }
+
+        .audio-wave .bar {
+            width: 3px;
+            margin: 0 1px;
+            background: #4F46E5;
+            animation: wave 1s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            50% { transform: scaleY(0.5); }
+        }
+
+        .notification {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .keyboard-shortcut {
+            font-size: 0.8rem;
+            color: #6B7280;
+            padding: 2px 6px;
+            background-color: #F3F4F6;
+            border-radius: 4px;
+            margin-left: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-2xl font-bold">Zillow Premier Agent Assistant</h1>
+                <div id="connection-status" class="px-3 py-1 rounded-full bg-gray-500">
+                    Connecting...
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div id="call-duration" class="text-xl font-mono">00:00</div>
+                <button id="start-call" onclick="startCall()" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-semibold transition-colors" disabled>
+                    Start Call <span class="keyboard-shortcut">⌘+S</span>
+                </button>
+                <div class="relative group">
+                    <button onclick="toggleSettings()" class="text-white hover:text-gray-200">
+                        <i class="fas fa-cog text-xl"></i>
+                    </button>
+                    <div id="settings-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl">
+                        <!-- Settings menu content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 flex gap-4 h-[calc(100vh-5rem)]">
+        <!-- Left Panel - Call Analytics -->
+        <div class="w-1/4 bg-white rounded-lg shadow-lg p-4 flex flex-col">
+            <h2 class="text-xl font-semibold mb-4">Call Analytics</h2>
+            
+            <!-- Audio Quality Indicators -->
+            <div class="mb-6">
+                <h3 class="text-sm font-semibold text-gray-600 mb-2">Audio Quality</h3>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm">Signal Strength</span>
+                        <div id="signal-strength" class="audio-wave">
+                            <div class="bar" style="animation-delay: -1.2s"></div>
+                            <div class="bar" style="animation-delay: -1.0s"></div>
+                            <div class="bar" style="animation-delay: -0.8s"></div>
+                            <div class="bar" style="animation-delay: -0.6s"></div>
+                            <div class="bar" style="animation-delay: -0.4s"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm">Noise Level</span>
+                        <div id="noise-level" class="w-24 h-2 bg-gray-200 rounded">
+                            <div class="h-full bg-green-500 rounded" style="width: 20%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call Progress -->
+            <div class="mb-6">
+                <h3 class="text-sm font-semibold text-gray-600 mb-2">ALM Progress</h3>
+                <div class="space-y-2">
+                    <div class="progress-item">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>Lead Qualification</span>
+                            <span id="progress-qualification">0%</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-200 rounded">
+                            <div id="progress-qualification-bar" class="h-full bg-blue-500 rounded" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>Needs Assessment</span>
+                            <span id="progress-needs">0%</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-200 rounded">
+                            <div id="progress-needs-bar" class="h-full bg-blue-500 rounded" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>Appointment Setting</span>
+                            <span id="progress-appointment">0%</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-200 rounded">
+                            <div id="progress-appointment-bar" class="h-full bg-blue-500 rounded" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call Metrics -->
+            <div class="mb-6">
+                <h3 class="text-sm font-semibold text-gray-600 mb-2">Call Metrics</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-3 rounded">
+                        <div class="text-sm text-gray-600">Rapport Score</div>
+                        <div id="rapport-score" class="text-2xl font-semibold">0</div>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded">
+                        <div class="text-sm text-gray-600">Key Info</div>
+                        <div id="key-info" class="text-2xl font-semibold">0/5</div>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded">
+                        <div class="text-sm text-gray-600">Objections</div>
+                        <div id="objections" class="text-2xl font-semibold">0</div>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded">
+                        <div class="text-sm text-gray-600">Interest Level</div>
+                        <div id="interest-level" class="text-2xl font-semibold">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Items -->
+            <div class="flex-grow">
+                <h3 class="text-sm font-semibold text-gray-600 mb-2">Action Items</h3>
+                <div id="action-items" class="space-y-2 overflow-y-auto">
+                    <!-- Action items will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Panel - Conversation -->
+        <div class="flex-grow bg-white rounded-lg shadow-lg p-4 flex flex-col">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold">Live Conversation</h2>
+                <div class="flex space-x-2">
+                    <button id="record-call" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors">
+                        <i class="fas fa-record-vinyl mr-1"></i> Record
+                    </button>
+                    <button onclick="clearTranscription()" class="px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-eraser mr-1"></i> Clear
+                    </button>
+                </div>
+            </div>
+            <div id="transcription" class="flex-grow overflow-y-auto space-y-2 bg-gray-50 p-4 rounded">
+                <!-- Transcription entries will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Right Panel - Suggestions -->
+        <div class="w-1/3 bg-white rounded-lg shadow-lg p-4 flex flex-col">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold">Smart Suggestions</h2>
+                <div class="flex space-x-2">
+                    <button onclick="toggleSuggestionType('all')" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+                        All
+                    </button>
+                    <button onclick="toggleSuggestionType('objections')" class="px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors">
+                        Objections
+                    </button>
+                </div>
+            </div>
+            <div id="suggestions" class="flex-grow overflow-y-auto space-y-4">
+                <!-- Suggestions will be inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Notification Area -->
+    <div id="notification-area" class="fixed bottom-4 right-4 space-y-2">
+        <!-- Notifications will be inserted here -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="utils/websocket-client.js"></script>
+    <script src="utils/speech-processor.js"></script>
+    <script src="utils/response-matcher.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
