@@ -91,14 +91,38 @@ class WebSocketManager {
     }
   }
 
-  // Audio streaming methods
+  // Audio recording and streaming methods
+  startRecording(clientId, agentId) {
+    if (!this.isConnected) {
+      throw new Error('WebSocket is not connected');
+    }
+
+    this.sendMessage('start_recording', { clientId, agentId });
+    return this.startAudioStream()
+      .then(recorder => {
+        this.currentRecorder = recorder;
+        return recorder;
+      });
+  }
+
+  stopRecording() {
+    if (this.currentRecorder) {
+      this.currentRecorder.stop();
+      this.currentRecorder = null;
+      this.sendMessage('stop_recording', {});
+    }
+  }
+
   startAudioStream() {
     return navigator.mediaDevices.getUserMedia({ audio: true })
       .then(stream => {
         const mediaRecorder = new MediaRecorder(stream);
         mediaRecorder.ondataavailable = (event) => {
           if (event.data.size > 0 && this.isConnected) {
-            this.ws.send(event.data);
+            // Convert blob to array buffer before sending
+            event.data.arrayBuffer().then(buffer => {
+              this.sendAudioChunk(buffer);
+            });
           }
         };
         mediaRecorder.start(100); // Capture in 100ms chunks
@@ -108,6 +132,19 @@ class WebSocketManager {
         console.error('Error accessing microphone:', error);
         throw error;
       });
+  }
+
+  sendAudioChunk(audioData) {
+    if (!this.isConnected) {
+      console.error('Cannot send audio chunk: WebSocket is not connected');
+      return;
+    }
+
+    if (audioData instanceof ArrayBuffer) {
+      this.ws.send(audioData);
+    } else {
+      console.error('Invalid audio data format');
+    }
   }
 
   // Event listener management

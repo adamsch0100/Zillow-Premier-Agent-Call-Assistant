@@ -1,0 +1,213 @@
+.performance-dashboard {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.time-range-selector select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.performance-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.metric-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+}
+
+.metric-card h3 {
+    margin: 0;
+    color: #666;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.metric-value {
+    margin: 0.5rem 0 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.performance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.chart-container {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container h3 {
+    margin: 0 0 1.5rem;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.metric-selector {
+    margin-bottom: 1rem;
+}
+
+.metric-selector select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    width: 200px;
+}
+
+.performance-analysis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.analysis-section {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.analysis-section h3 {
+    margin: 0 0 1rem;
+    color: #2c3e50;
+}
+
+.strength-list,
+.improvement-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.strength-item,
+.improvement-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.strength-icon,
+.improvement-icon {
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.team-comparison {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.team-stats {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.team-metric {
+    margin-top: 1rem;
+}
+
+.team-metric label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #666;
+}
+
+.comparison-bar {
+    height: 24px;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.your-performance,
+.team-average {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.your-performance {
+    background-color: #8884d8;
+    z-index: 2;
+}
+
+.team-average {
+    background-color: #82ca9d;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.comparison-legend {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.your-label {
+    color: #8884d8;
+    font-weight: 500;
+}
+
+.team-label {
+    color: #82ca9d;
+    font-weight: 500;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.error {
+    color: #dc3545;
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff3f4;
+    border-radius: 8px;
+    margin: 1rem 0;
+}

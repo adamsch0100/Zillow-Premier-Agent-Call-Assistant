@@ -1,0 +1,97 @@
+.call-history {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.recordings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.recording-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.recording-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recording-item.selected {
+    border-color: #007bff;
+    background-color: #f8f9ff;
+}
+
+.recording-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.recording-primary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recording-secondary {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.client-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.recording-date {
+    color: #666;
+}
+
+.recording-player {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.audio-player {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.recording-details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.recording-details p {
+    margin: 0.5rem 0;
+    color: #444;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+.error {
+    color: #dc3545;
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff3f4;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
